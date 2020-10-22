@@ -8,12 +8,12 @@ function CreatureGraphic(props) {
 
     return (
         
-            <span onClick={() => props.clickCreature(i)}  className="Selectable, PopIn" key={i}>
-                    <svg width="22" height="22" key={i}> 
-                        <circle stroke={props.selectedCreatures.includes(i) ? "red" : "black"}  strokeWidth="2" fill="green" cx="11" cy="11" r="10" key={i}></circle>
-                        <text className="svgtext, PopIn" fill="black" fontSize="16" x="7" y="16" >{e}</text>
+            <div onClick={() => props.clickCreature(i)}  className="Selectable, PopIn" key={i} >
+                    <svg width="30" height="32" key={i}> 
+                        <circle stroke={props.selectedCreatures.includes(i) ? "red" : "black"}  strokeWidth="2" fill="green" cx="14" cy="14" r="13" key={i}></circle>
+                        <text className="svgtext, PopIn" fill="black" fontSize="16" x={ e/10 >= 1 ? "5": "10"} y="18" >{e}</text>
                     </svg>
-            </span>
+            </div>
         
     )
 }

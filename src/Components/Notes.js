@@ -9,7 +9,7 @@ function Notes(props) {
         props.updateGroup(newGroup)
     }
 
-    return <textarea value={props.group.notes} onChange={updateSelf}></textarea>
+    return <textarea value={props.group.notes} onChange={updateSelf} ></textarea>
 }
 
 export default Notes

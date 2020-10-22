@@ -45,9 +45,9 @@ function NewGroupMaker(props){
     function submitCreature() {
         
         let group = {...newCreature}
-        group.key = props.groupData.length-1
+        group.key = props.groupData.length
         group.creatures = new Array(Number(group.initialSize))
-        group.creatures.fill(group.creatureHp)
+        group.creatures.fill(Number(group.creatureHp))
         let newData = JSON.parse(JSON.stringify(props.groupData))
         newData.push(group)
         props.updateData(newData)

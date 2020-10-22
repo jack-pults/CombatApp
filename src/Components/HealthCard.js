@@ -6,6 +6,7 @@ function HealthCard(props) {
     const [viewMode, changeViewMode] = useState(false)
     const group = props.group
 
+
     return (
         <div>
 

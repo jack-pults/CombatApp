@@ -36,7 +36,7 @@ function App() {
     list[1].name=  "Sharks"
     list[1].creatures= [9,9,9,9,9,9,9]
     list[1].initialSize=  7
-    list[1].creatureHp=  7 
+    list[1].creatureHp=  9 
     list[1].armorClass=  15 
     list[1].attackOptions = []
     list[1].attackOptions.push(new Attack_obj("Scimitar", false, 4, 6, 1, 2, "Slashing"))
@@ -65,8 +65,7 @@ function App() {
 
   return (
     <div className="App" >
-      The Combat App
-      <button type="button" onClick={() => console.log(groupData)}>Show</button>
+      
       Use Critical Hits?
       <input type="checkbox" name="crit" checked={crit} onChange={()=> changeCrit(!crit)}/>
       {groups}

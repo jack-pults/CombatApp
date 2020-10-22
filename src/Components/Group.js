@@ -27,21 +27,26 @@ function Group(props) {
     
 
     return (
-        <div> 
-            {" " + group.name} AC: {group.armorClass} <br />
-            It has {aliveCreatures} creatures alive out of {group.initialSize} <br />
-            <HealthCard group={group} />
-            <MemberDisplay group={group} selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures} />
-            <SaveBlock group={group}/>
-            <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} />
-
-            <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
-            <br />
+        <span className="group">
+            <div className="memberDisplay"><MemberDisplay group={group} selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures} /> </div>
+            
+                <div className="centerColumn">{" " + group.name} 
+                    <br />
+                {aliveCreatures}/{group.initialSize} Creatures<br />
+                <HealthCard group={group} /> AC: {group.armorClass} 
+                <SaveBlock group={group}/> <br />
+                
+                
+                
+                <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} />
+                <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
+                    <br />
+                </div>
+          
             
             
-            <Notes group={group} updateGroup={updateGroup} />
-            
-        </div>
+                <Notes group={group} updateGroup={updateGroup} />
+        </span>
     )
 }
 

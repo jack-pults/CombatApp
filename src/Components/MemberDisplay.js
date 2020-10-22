@@ -39,7 +39,7 @@ class MemberDisplay extends React.Component  {
     render() {
         
         return (
-            <div>
+            <div className="memberCircles">
                 {this.createCircles()}
             </div>
         )
