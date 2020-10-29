@@ -49,8 +49,7 @@ function WeaponAttackSingle(props){
             :
         
             <div>
-            To Hit:{attack.bonus > 0 ? "+" : ""}{attack.bonus} Damage: {attack.numDie}d{attack.damDie}+{attack.damBonus} Type: {attack.type}
-            <br /> AC of Target:<input type="number" value={targetAC} onChange={(e)=> changeTargetAC(Number(e.target.value))} />
+            AC of Target:<input type="number" value={targetAC} onChange={(e)=> changeTargetAC(Number(e.target.value))} />
             Additional Attack Modifier <input type="number" value={attkMod} onChange={(e) => changeAttkMod(Number(e.target.value))} />
             <button type="button" onClick={() => rollAttacks() } >Roll Attacks</button>
             {finalResults.length > 0 ? 

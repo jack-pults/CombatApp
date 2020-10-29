@@ -34,7 +34,8 @@
 
 
 textarea {
-  width: 90%;
+  max-width: 90%;
+  min-width: 90%;
 }
 
 #Title {
@@ -43,7 +44,7 @@ textarea {
 
 .group {
   display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-columns: 2fr 3fr;
   border: dotted black;
   margin: 1%;
   margin-top: 1em;
@@ -57,7 +58,7 @@ textarea {
   
 }
 
-.memberDisplay {
+.groupStats {
   max-width: 310px;
 }
 
@@ -67,6 +68,8 @@ textarea {
   border: dotted blue;
 }
 
-.centerColumn {
-  
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

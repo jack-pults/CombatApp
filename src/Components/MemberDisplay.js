@@ -32,7 +32,7 @@ class MemberDisplay extends React.Component  {
     createCircles() {
 
         return this.props.group.creatures.map((e,i) => 
-            <CreatureGraphic e={e} i={i} selectedCreatures={this.props.selectedCreatures} clickCreature={this.clickCreature} key={i} /> )
+            <CreatureGraphic e={e} i={i} selectedCreatures={this.props.selectedCreatures} clickCreature={this.clickCreature} key={i} maxHp={this.props.group.creatureHp} /> )
 
     }
 

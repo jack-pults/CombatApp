@@ -42,11 +42,11 @@ function TakeDamage(props) {
     switch(props.menu) {
         case 0:
             return(
-                <button onClick={() => props.updateMenu(3)}>
-                    Defending
+                <button onClick={() => props.updateMenu(2)}>
+                    Defend
                 </button>
             )
-        case 3:
+        case 2:
             return(
                 <div>
                     <TargetType targetType={targetType} change={changeTargetType} />
@@ -112,9 +112,9 @@ function TakeDamage(props) {
             )
         default: 
             return(
-                <div>
+                <span>
                     
-                </div>
+                </span>
             )
     }
     

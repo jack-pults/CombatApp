@@ -37,8 +37,7 @@ function STAttackSingle(props){
         <div>
             {attack.saving? 
                 <div>
-                    DC: {attack.DC} {attack.savingType} Save Damage: {attack.numDie}d{attack.damDie}+{attack.damBonus} Type: {attack.type}    
-                    <br /> 
+                    
                     Target's Total Bonus:<input type="number" value={targetBonus} onChange={(e)=> changeTargetBonus(Number(e.target.value))} />
                     
                     <button type="button" onClick={() => rollSaves()}>Roll Saves</button>
