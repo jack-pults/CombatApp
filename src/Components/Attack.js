@@ -20,7 +20,6 @@ function Attack(props) {
     const [numTargets, changeNumTargets] = useState(1)
     const [targetType, changeTargetType] = useState("random")
     const [selection, changeSelection] = useState(false) //Boolean for target only selected creatures.
-    const [rollResults, changeRollResults] = useState([])
     const [prevState, changePrevState] = useState(null)
     const [selectedTargets, changeSelectedTargets] = useState([])
 
@@ -90,8 +89,8 @@ function Attack(props) {
                         <input type="range" name="numAttackers" min="0"  max={aliveCreatures} value={numAttackers} onChange={(e) => changeNumAttackers(Number(e.target.value))} /> {maxNumAttackers}
                         <br />
                         
-                        {singleAttack ? <div><STAttackSingle attack={attack} numAttackers={maxNumAttackers} rolltype={rolltype} /> 
-                                        <WeaponAttackSingle attack={attack} numAttackers={maxNumAttackers} rolltype={rolltype} crit={props.crit} /> </div>
+                        {singleAttack ? <div><STAttackSingle attack={attack} numAttackers={maxNumAttackers} rolltype={rolltype} changeResults={props.changeResults} /> 
+                                        <WeaponAttackSingle attack={attack} numAttackers={maxNumAttackers} rolltype={rolltype} crit={props.crit} changeResults={props.changeResults} /> </div>
                                     :
                                     <div>
                                         
@@ -107,7 +106,7 @@ function Attack(props) {
                                         <input type="range" name="numTargets" min={1} max={ SmallFunctions.numAboveZero(props.groupData[targetGroup].creatures)} value={numTargets} onChange={(e)=>changeNumTargets(Number(e.target.value))} /> {maxTargets}
                                         <ApplyDamage group={props.group} numTargets={maxTargets} selection={selection}
                                                     selectedCreatures={selectedTargets} targetType={targetType} buttonText={"Attack!"}
-                                                    changeRollResults={changeRollResults} changePrevState={changePrevState}
+                                                    changeResults={props.changeResults} changePrevState={changePrevState}
                                                     updateGroup={props.updateGroup} secondGroup={props.groupData[targetGroup]}
                                                     selectedAttack={attack} numAttackers={numAttackers} />
 

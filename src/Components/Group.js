@@ -8,6 +8,7 @@ import Attack from './Attack'
 import TakeDamage from './TakeDamage.js'
 import Heal from './Heal.js'
 import Destroy from './Destroy.js'
+import Results from './Results.js'
 
 function Group(props) {
 
@@ -15,6 +16,7 @@ function Group(props) {
     let aliveCreatures = SmallFunctions.numAboveZero(group.creatures)
 
     const [selectedCreatures, changeSelectedCreatures] = useState([])
+    const [results, changeResults] = useState([])
 
     const [menu, changeMenu] = useState(0) //Using this to tell the interaction forms to either show a button to open their form, their form, or nothing. 
     //Menu 0 is show buttons. 1 is Attack 2 is Defend 3 is Heal 4 is Destroy
@@ -42,8 +44,8 @@ function Group(props) {
             
                 <div className="menu">
                 
-                <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} />
-                <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
+                <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} changeResults={changeResults}/>
+                <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} changeResults={changeResults} />
                 <Heal group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
                 <Destroy group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />   
                 </div>
@@ -52,6 +54,7 @@ function Group(props) {
             
                 
         </span>
+            <Results results={results} />
             <Notes group={group} updateGroup={updateGroup} />
         </div>
     )

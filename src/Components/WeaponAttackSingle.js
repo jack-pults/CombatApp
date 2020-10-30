@@ -12,33 +12,36 @@ function WeaponAttackSingle(props){
 
    function rollAttacks() {
         let results = []
-        let i;
+        let mainResults = []
         let rolls = SmallFunctions.rollDice(props.rolltype, props.numAttackers)
         changeRollResults(rolls)
         
-        for (i=0; i < props.numAttackers; i++) {
+        for (let i=0; i < props.numAttackers; i++) {
             
             let roll = rolls[i]
-            
+            mainResults.push([roll])
             if (props.crit && roll === 20) {
                 console.log("CRIT")
                 var number = Math.floor(Math.random()*attack.damDie+1)
                 number = number*2
                 number = number + attack.damBonus
                 results.push(number)
-                
+                mainResults[i].push(number)
+                mainResults[i][0] += 1; //make the roll equal to 21 to tell the results it is actually a crit
             }
             else if ( (roll + attack.bonus + attkMod) >= targetAC) {
                 results.push(Math.floor(Math.random()*attack.damDie + attack.damBonus + 1))
+                mainResults[i].push(Math.floor(Math.random()*attack.damDie + attack.damBonus + 1))
             }
             else {
-               results.push(0) 
+               results.push(0)
+               mainResults[i].push(0) 
             }
 
-            
+            mainResults[i].push(true)
         }
         changeFinalResults(results)
-        
+        props.changeResults(mainResults)
     } 
 
     return (
