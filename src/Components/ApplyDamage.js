@@ -45,8 +45,8 @@ function ApplyDamage(props) {
         
         let  targets = props.numTargets;
         let rollResults = []
-        let sortedRolls = []
-
+        let finalResults = []
+        let damage = null;
         
 
         if (!props.aoe && !props.secondGroup) { //If doing single target damage
@@ -81,11 +81,16 @@ function ApplyDamage(props) {
             if(props.aoe) { //if aoe effect
                 while (targets > 0 && nonzeros.length > 0) {
                     if (props.saveRule === "None" || rollResults[0] + newGroup.Saves[props.saveType]< props.saveDC ) 
-                        newGroup.creatures[nonzeros[0]] = Math.max( 0 , newGroup.creatures[nonzeros[0]] - props.damage )
+                        damage = props.damage
+                        
                     else if (props.saveRule === "Half")
-                        newGroup.creatures[nonzeros[0]] = Math.max( 0 , newGroup.creatures[nonzeros[0]] - Math.floor(props.damage / 2 ))
+                        damage = Math.floor(props.damage / 2)
                     
-                    sortedRolls.push([nonzeros[0], rollResults[0]])
+                    else 
+                        damage = 0;
+                        
+                    newGroup.creatures[nonzeros[0]] = Math.max( 0 , newGroup.creatures[nonzeros[0]] - (damage))
+                    finalResults.push([rollResults[0], damage, false])
                     rollResults.splice(0,1)
                     nonzeros.splice(0,1)
                     targets -= 1;
@@ -95,25 +100,36 @@ function ApplyDamage(props) {
             }
             else { //if group attack
                nonzeros = nonzeros.splice(0, targets)
-               console.log(nonzeros)
                while (rollResults.length > 0 && nonzeros.length > 0) {
                    let newDamage = props.selectedAttack.damBonus
                    let victim = Math.floor(Math.random()*nonzeros.length)
+                   finalResults.push([rollResults[0]])
                    for (let i = 0; i <= props.selectedAttack.numDie; i++) {
                        newDamage += Math.floor(Math.random() * props.selectedAttack.damDie)
                    }
                     if(props.selectedAttack.saving) {
                         if(rollResults[0] + newGroup.Saves[props.selectedAttack.savingType] < props.selectedAttack.DC ) {
                             newGroup.creatures[nonzeros[victim]] = Math.max(0, newGroup.creatures[nonzeros[victim]] - newDamage)
+                            finalResults[finalResults.length-1].push(newDamage)
+                            finalResults[finalResults.length-1].push(false)
+                        }
+                        else {
+                            finalResults[finalResults.length-1].push(0)
+                            finalResults[finalResults.length-1].push(false) 
                         }
                     }
                     else {
                         if( rollResults[0] + props.selectedAttack.bonus >= newGroup.armorClass ) {
                             newGroup.creatures[nonzeros[victim]] = Math.max(0, newGroup.creatures[nonzeros[victim]] - newDamage)
+                            finalResults[finalResults.length-1].push(newDamage)
+                            finalResults[finalResults.length-1].push(true)
+                        }
+                        else {
+                            finalResults[finalResults.length-1].push(0)
+                            finalResults[finalResults.length-1].push(true)
                         }
                     }
 
-                    sortedRolls.push( [nonzeros[victim], rollResults[0]] )
                    if(newGroup[nonzeros[victim]] === 0) nonzeros.splice(victim, 1)
                    rollResults.splice(0,1) 
 
@@ -121,9 +137,11 @@ function ApplyDamage(props) {
             }
         }
 
-        rollResults = sortedRolls.sort( (a,b) => a[0] - b[0])
-        console.log(rollResults)
-        props.changeRollResults(rollResults)
+        
+        if(props.saveRule === "None")
+            props.changeRollResults([])
+        else
+            props.changeRollResults(finalResults)
         props.updateGroup(newGroup)    
     }
 

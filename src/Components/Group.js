@@ -54,7 +54,9 @@ function Group(props) {
             
                 
         </span>
-            <Results results={results} />
+            <span className="groupBottom">
+                <Results results={results} />  
+            </span>
             <Notes group={group} updateGroup={updateGroup} />
         </div>
     )

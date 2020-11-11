@@ -7,15 +7,14 @@ function STAttackSingle(props){
 
     const attack = props.attack
     const [targetBonus, changeTargetBonus] = useState(0)
-    const [rollResults, changeRollResults] = useState([])
-    const [finalResults, changeFinalResults] = useState([])
+    const [finalDamage, changeFinalDamage] = useState(0)
 
     function rollSaves(){
 
       
         let results = []
         let rolls = SmallFunctions.rollDice(props.rolltype, props.numAttackers)
-        changeRollResults(rolls)
+        
         let finalResults = []
 
         for (let i=0; i < props.numAttackers; i++) {
@@ -33,7 +32,7 @@ function STAttackSingle(props){
             finalResults[i].push(false)
             }
         props.changeResults(finalResults)
-        changeFinalResults(results)
+        changeFinalDamage(finalResults.reduce((sum, e) => sum + Number(e[1]), 0 ) )
           
     }
 
@@ -46,11 +45,8 @@ function STAttackSingle(props){
                     Target's Total Bonus:<input type="number" value={targetBonus} onChange={(e)=> changeTargetBonus(Number(e.target.value))} />
                     
                     <button type="button" onClick={() => rollSaves()}>Roll Saves</button>
-                    {finalResults.length > 0 ? 
-                        <AttackResults finalResults={finalResults} rolls={rollResults} type={attack.type} />
-                        :
-                        <div>Results Here</div>
-                        }
+                    
+                    <AttackResults finalDamage={finalDamage} key={finalDamage + Math.random()} type={attack.type} />
                 </div>
                 :
                 <div>
