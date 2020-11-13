@@ -56,7 +56,9 @@ function App() {
   function updateStats(updatedGroup) {
     ///recieves a group object
     const updatedArray = [...groupData] ///make duplicate of array of groups
-    updatedArray[updatedGroup.key] = updatedGroup ///replace the old group in duplicate with new group
+    let key = updatedArray.findIndex((el) => el.key === updatedGroup.key)
+    updatedArray[key] = updatedGroup ///replace the old group in duplicate with new group
+    
     updateData(updatedArray) ///update State with new revised array
     
   }

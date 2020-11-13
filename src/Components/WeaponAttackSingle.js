@@ -49,7 +49,9 @@ function WeaponAttackSingle(props){
         <div>
         {attack.saving ?
             
-            <div></div>
+            <div>
+                
+            </div>
             :
         
             <div>
@@ -58,7 +60,7 @@ function WeaponAttackSingle(props){
             <button type="button" onClick={() => rollAttacks() } >Roll Attacks</button>
             
             <AttackResults finalDamage={finalDamage} key={String(finalDamage) + Math.random()}  type={attack.type} />
-                
+            
             </div>
         }
         </div>

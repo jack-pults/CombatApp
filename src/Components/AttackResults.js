@@ -2,15 +2,22 @@ import React from 'react'
 
 
 
-function AttackResults(props) {
+class AttackResults extends React.PureComponent {
+
+    constructor(props) {
+        super(props);
+    }
 
     
 
-    return (
-        <div className="result">
-            Total Damage= {props.finalDamage} {props.type}
-        </div>
-    )
+    render() {
+        
+        return (
+            <div >
+                <span>Total Damage= {this.props.finalDamage} {this.props.type} </span> 
+            </div>
+        )
+    }
 
 }
 

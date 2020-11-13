@@ -50,6 +50,7 @@ function STAttackSingle(props){
                 </div>
                 :
                 <div>
+        
                 </div>
             }
         </div>

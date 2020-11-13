@@ -39,6 +39,8 @@ function Group(props) {
                 {aliveCreatures}/{group.initialSize} Creatures<br />
                 <HealthCard group={group} /> AC: {group.armorClass} 
                 <SaveBlock group={group}/> <br />
+                <button onClick={() => changeSelectedCreatures(group.creatures.map( (value, index)=> index))}>Select All</button>
+                <button onClick={() => changeSelectedCreatures([])}>Clear Selection</button>
                 <MemberDisplay group={group} selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures} /> 
                 </div>
             
@@ -47,16 +49,18 @@ function Group(props) {
                 <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} changeResults={changeResults}/>
                 <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} changeResults={changeResults} />
                 <Heal group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
-                <Destroy group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />   
+                <Destroy group={group} menu={menu} groupData={props.groupData} updateStats={props.updateStats} updateMenu={updateMenu} updateGroup={updateGroup} 
+                    selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures}
+                            />   
                 </div>
           
             
             
                 
         </span>
-            <span className="groupBottom">
+            <div className="groupBottom">
                 <Results results={results} />  
-            </span>
+            </div>
             <Notes group={group} updateGroup={updateGroup} />
         </div>
     )

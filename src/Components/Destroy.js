@@ -14,6 +14,40 @@ function Destroy(props) {
             props.updateGroup(prevState)
     }
 
+    function deleteSelected() {
+        if(props.selectedCreatures.length >= props.group.creatures.length) {
+            alert("Groups must have at least 1 creature!")
+            return
+        }
+        
+        let newGroup = JSON.parse(JSON.stringify(props.group))
+        let newCreatures = newGroup.creatures
+        let length = newCreatures.length
+
+        newGroup.creatures = newCreatures.filter( (val, index) => !props.selectedCreatures.includes(index))
+
+        newGroup.initialSize -= props.selectedCreatures.length
+        props.changeSelectedCreatures([])
+       
+        props.updateGroup(newGroup)
+        
+    }
+
+    function deleteGroup() {
+        
+        let index = null;
+        
+        let i;
+        for( i in props.groupData) {
+            if (props.groupData[i].key === props.group.key)
+                index = i;
+        }
+
+        
+        let newList = props.groupData
+        newList.splice(index,1)
+        props.updateGroup(newList)
+    }
 
 
     switch(props.menu) {
@@ -29,6 +63,14 @@ function Destroy(props) {
         case 4:
             return(
                 <div>
+                    <button onClick={() => deleteSelected()}>
+                        Destroy Selected
+                    </button>
+                    <br />
+                    <button onClick={() => deleteGroup()}>
+                        Delete Group
+                    </button>
+                    <br />
                     <button onClick={() => props.updateMenu(0)}>
                         Back
                     </button>  

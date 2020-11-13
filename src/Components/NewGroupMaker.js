@@ -29,12 +29,26 @@ function NewGroupMaker(props){
 
 
     function creaturePresets() {
-        return CreatureData.map((element, index) => <option key={index} value={element.key}> {element.name} </option> )
+        return CreatureData.map((element, index) => <option key={index} value={index}> {element.name} </option> )
+    }
+
+    function submitPreset(event) {
+        if(event.target.value === "Default") {
+            return
+        }
+        let preset = CreatureData[event.target.value]
+        let next = JSON.parse(JSON.stringify(newCreature))
+
+        console.log(Object.assign(next, preset))
+        
+
+
+        changeNewCreature(next)
     }
 
     function submitAttack(event) {
         let tar = event.target
-        let newAttack = new Attack_obj(tar[0].value, tar[1].value, Number(tar[4].value), tar[5].value, tar[6].value, tar[7].value, tar[8].value, tar[3].value, tar[2].value )
+        let newAttack = new Attack_obj(tar[0].value, attackType, Number(tar[4].value), tar[5].value, tar[6].value, tar[7].value, tar[8].value, tar[3].value, tar[2].value )
 
         let newAttacks = [...newCreature.attackOptions]
         newAttacks.push(newAttack)
@@ -76,7 +90,8 @@ function NewGroupMaker(props){
     return(
         <div>
             New Group Editor <br />
-            Select Preset: <select name="presets" id="presets"> 
+            Select Preset: <select onChange={submitPreset} name="presets" id="presets"> 
+                            <option value={"Default"}>---</option>
                             {creaturePresets()}
                             </select> <br />
             Name:<TextInput data={newCreature.name} change={(newData) => changeNewCreature(modifyObjectState(newCreature, newData, "name"))}  />
@@ -153,7 +168,7 @@ function NewGroupMaker(props){
                 <button type="submit">Add Attack</button>
             </form>
 
-            {newCreature.attackOptions.map( (value,index) => <div key={index}>{value.name} {value.bonus} </div>)}
+            {newCreature.attackOptions.map( (value,index) => <div key={index}>+{value.bonus} {value.name} {value.numDie}d{value.damDie}+{value.damBonus} {value.type} </div>)}
             
             <Notes group={newCreature} updateGroup={changeNewCreature} />
             <button type="button" onClick={submitCreature}>Create</button>
