@@ -4,11 +4,6 @@ import React from 'react'
 
 class AttackResults extends React.PureComponent {
 
-    constructor(props) {
-        super(props);
-    }
-
-    
 
     render() {
         

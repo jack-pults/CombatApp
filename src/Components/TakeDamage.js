@@ -18,6 +18,7 @@ function TakeDamage(props) {
     const [saveRule, changeSaveRule] = useState("Half")
     const [saveType, changeSaveType] = useState("DEX")
     const [rolltype, changeRolltype] = useState("Normal")
+    const [deadGuys, changeDeadGuys] = useState(null)
     
 
     const aliveCreatures = SmallFunctions.numAboveZero(props.group.creatures)
@@ -94,7 +95,7 @@ function TakeDamage(props) {
                     
 
                     <ApplyDamage group={props.group} damage={damage} bleedthrough={bleedthrough} numTargets={numTargets} selection={selection} selectedCreatures={props.selectedCreatures} targetType={targetType} aoe={aoe} 
-                                    saveRule={saveRule} buttonText="Apply Damage" saveDC={saveDC} saveType = {saveType}
+                                    saveRule={saveRule} buttonText="Apply Damage" saveDC={saveDC} saveType = {saveType} changeDeadGuys={changeDeadGuys}
                                    changeRollResults={props.changeResults} changePrevState={changePrevState} updateGroup={props.updateGroup} />
 
                     <button onClick={() => undoLastChange()} >
@@ -104,7 +105,7 @@ function TakeDamage(props) {
                     <button onClick={() => changeAoe(!aoe)} >
                         {aoe ? "Single" : "Group"}
                     </button>
-                    
+                    Dead:{deadGuys}
                    <button onClick={() => props.updateMenu(0)}>
                         Back
                     </button> 

@@ -31,7 +31,7 @@ function Group(props) {
     
 
     return (
-        <div>
+        <div className="groupContainer">
         <span className="group">
             <div className="groupStats">
                 {" " + group.name} 
@@ -47,8 +47,11 @@ function Group(props) {
                 <div className="menu">
                 
                 <Attack group={group} menu={menu} updateMenu={updateMenu} crit={props.crit} groupData={props.groupData} updateGroup={updateGroup} changeResults={changeResults}/>
+                <br />
                 <TakeDamage group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} changeResults={changeResults} />
+                <br />
                 <Heal group={group} menu={menu} updateMenu={updateMenu} updateGroup={updateGroup} selectedCreatures={selectedCreatures} />
+                <br />
                 <Destroy group={group} menu={menu} groupData={props.groupData} updateStats={props.updateStats} updateMenu={updateMenu} updateGroup={updateGroup} 
                     selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures}
                             />   
@@ -58,7 +61,7 @@ function Group(props) {
             
                 
         </span>
-            <div className="groupBottom">
+            <div className="diceContainer">
                 <Results results={results} />  
             </div>
             <Notes group={group} updateGroup={updateGroup} />

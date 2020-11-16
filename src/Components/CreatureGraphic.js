@@ -8,10 +8,10 @@ function CreatureGraphic(props) {
 
     function colorSwitch() {
         if(e / props.maxHp >= .75) {
-            return "green"
+            return "#23Ce6b"
         }
-        else if (e / props.maxHp >= .35) return "yellow"
-        else if (e > 0 ) return "red"
+        else if (e / props.maxHp >= .3) return "#ff220c"
+        else if (e > 0 ) return "#ff220c"
         return "grey"
     }
 

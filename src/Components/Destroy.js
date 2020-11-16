@@ -1,18 +1,15 @@
 import React, {useState} from 'react'
-import SmallFunctions from '../Functions/SmallFunctions'
-
 
 
 function Destroy(props) {
 
-    const aliveCreatures = SmallFunctions.numAboveZero(props.group.creatures)
-    const [prevState, changePrevState] = useState(null)
+    /* const [prevState, changePrevState] = useState(null)
 
     function undoLastChange() {
         console.log(prevState)
         if (prevState)
             props.updateGroup(prevState)
-    }
+    } */
 
     function deleteSelected() {
         if(props.selectedCreatures.length >= props.group.creatures.length) {
@@ -22,7 +19,6 @@ function Destroy(props) {
         
         let newGroup = JSON.parse(JSON.stringify(props.group))
         let newCreatures = newGroup.creatures
-        let length = newCreatures.length
 
         newGroup.creatures = newCreatures.filter( (val, index) => !props.selectedCreatures.includes(index))
 
@@ -59,7 +55,7 @@ function Destroy(props) {
                     </button>
             )
         
-        //Show Menu for attacking, toggling between attacking a target or group with singleAttack
+        //Show Menu for Destroy
         case 4:
             return(
                 <div>

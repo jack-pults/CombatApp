@@ -10,11 +10,13 @@ function RollTypeSelect (props) {
     return (
         <span>
             <input type="radio" name={desig+"rolltype"} id="Normal" value="Normal" checked={rolltype === "Normal"} onChange={()=>changeRolltype("Normal")}/>
-                        Normal
+                <label htmlFor="Normal">{rolltype ==="Normal" ? <u>Normal</u>:"Normal"}</label>
+                <br />
             <input type="radio" name={desig+"rolltype"} id="Advantage" value="Advantage" checked={rolltype === "Advantage"} onChange={()=>changeRolltype("Advantage")}/>
-                        Advantage
+                <label htmlFor="Advantage">{rolltype ==="Advantage" ? <u>Advantage</u>:"Advantage"}</label>
+                <br />
             <input type="radio" name={desig+"rolltype"} value="Disadvantage" checked={rolltype === "Disadvantage"} onChange={()=>changeRolltype("Disadvantage")}/>
-                        Disadvantage 
+                <label htmlFor="Disadvantage">{rolltype ==="Disadvantage" ? <u>Disadvantage</u>:"Disadvantage"}</label>
         </span>
     )
 }

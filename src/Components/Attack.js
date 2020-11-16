@@ -17,16 +17,21 @@ function Attack(props) {
     const [singleAttack, changeSingleAttack] = useState(true)
 
     const [targetGroup, changeTargetGroup] = useState(0)
-    const [numTargets, changeNumTargets] = useState(1)
+    const [numTargets, changeNumTargets] = useState(0)
     const [targetType, changeTargetType] = useState("random")
     const [selection, changeSelection] = useState(false) //Boolean for target only selected creatures.
     const [prevState, changePrevState] = useState(null)
     const [selectedTargets, changeSelectedTargets] = useState([])
 
     const maxNumAttackers = Math.min(numAttackers, aliveCreatures)
+
+    //Limit the amount of targets to a possible amount
     let maxTargets = 0;
     if (props.groupData[targetGroup])
-        maxTargets = Math.min(numTargets, SmallFunctions.numAboveZero(props.groupData[targetGroup].creatures))
+        maxTargets = SmallFunctions.numAboveZero(props.groupData[targetGroup].creatures)
+
+    if  (numTargets > maxTargets)
+        changeNumTargets(maxTargets)
 
     const attack = props.group.attackOptions[chosenAttack]
 
@@ -107,8 +112,8 @@ function Attack(props) {
                                         {props.groupData[targetGroup] ? 
                                             <span>
                                             How many can be hit:
-                                            <input type="range" name="numTargets" min={1} max={ maxTargets} value={numTargets} onChange={(e)=>changeNumTargets(Number(e.target.value))} /> {maxTargets}
-                                            <ApplyDamage group={props.group} numTargets={maxTargets} selection={selection}
+                                            <input type="range" name="numTargets" min={0} max={ maxTargets} value={numTargets} onChange={(e)=>changeNumTargets(Number(e.target.value))} /> {numTargets}
+                                            <ApplyDamage group={props.group} numTargets={numTargets} selection={selection}
                                                         selectedCreatures={selectedTargets} targetType={targetType} buttonText={"Attack!"}
                                                         changeRollResults={props.changeResults} changePrevState={changePrevState}
                                                         updateGroup={props.updateGroup} secondGroup={props.groupData[targetGroup]}

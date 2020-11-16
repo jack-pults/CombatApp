@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: #022b3a; */
 }
 
 
@@ -44,14 +45,20 @@ textarea {
   text-align: center;
 }
 
+.groupContainer {
+  
+  background-color: #f6f8ff;
+  
+}
+
 .group {
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: minmax(140px,2fr) 3fr;
   border: dotted black;
-  margin: 1%;
-  margin-top: 1em;
-  gap: 1em;
-  
+  margin: auto;
+  gap: 1rem;
+  place-content: center;
+  justify-items: center;
   
 }
 
@@ -62,6 +69,7 @@ textarea {
 
 .groupStats {
   max-width: 310px;
+  
 }
 
 .memberCircles {
@@ -71,9 +79,13 @@ textarea {
 }
 
 .menu {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+
+.diceContainer {
+  max-width: 95%;
 }
 
 .resultContainer {
@@ -120,3 +132,4 @@ textarea {
   99% {visibility: hidden;}
   100% {visibility: visible;}
 }
+

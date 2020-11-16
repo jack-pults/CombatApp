@@ -7,6 +7,8 @@ function ApplyDamage(props) {
     // Optional: secondGroup, selectedAttack, numAttackers, saveDC, saveType
     function doDamage() {
         let newGroup = {}
+        let deadGuys = 0;
+
         if (props.secondGroup) 
             newGroup = JSON.parse(JSON.stringify(props.secondGroup))
         else
@@ -55,18 +57,25 @@ function ApplyDamage(props) {
 
             while (nonzeros.length > 0 && targets > 0 && remainder > 0) {
 
-                if(newGroup.creatures[nonzeros[0]] >= remainder){
+                if(newGroup.creatures[nonzeros[0]] > remainder){
                     newGroup.creatures[nonzeros[0]] -= remainder
                     remainder = 0;
+                }
+                else if (newGroup.creatures[nonzeros[0]] === remainder) {
+                    remainder = 0;
+                    deadGuys += 1;
+                    newGroup.creatures[nonzeros[0]] = 0;
                 }
                 else{
                     remainder -= newGroup.creatures[nonzeros[0]]
                     newGroup.creatures[nonzeros[0]] = 0
+                    deadGuys += 1;
                 }
                 nonzeros.splice(0, 1)
-                targets -= 1;    
+                targets -= 1;  
+                console.log("loop")  
             }    
-        
+            
         }
         else {
             if (props.saveRule === "None") 
@@ -90,6 +99,7 @@ function ApplyDamage(props) {
                         damage = 0;
                         
                     newGroup.creatures[nonzeros[0]] = Math.max( 0 , newGroup.creatures[nonzeros[0]] - (damage))
+                    if (newGroup.creatures[nonzeros[0]] === 0) deadGuys += 1;
                     finalResults.push([rollResults[0], damage, false])
                     rollResults.splice(0,1)
                     nonzeros.splice(0,1)
@@ -142,7 +152,8 @@ function ApplyDamage(props) {
             props.changeRollResults([])
         else
             props.changeRollResults(finalResults)
-        props.updateGroup(newGroup)    
+        props.updateGroup(newGroup)   
+        props.changeDeadGuys(deadGuys) 
     }
 
 

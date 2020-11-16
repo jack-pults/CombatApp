@@ -1,11 +1,58 @@
 
 const CreatureData = [
     { 
+      name: "Acolytes", 
+      creatureHp: 9, 
+      armorClass: 10, 
+      attackOptions:[{name:"Club", saving: false, bonus:2, damDie:4, numDie:1, damBonus:0, type:"Bludgeoning"},
+      {name:"Sacred Flame", saving: true, bonus:0, damDie:8, numDie:1, damBonus:0, type:"Radiant", savingType:"DEX", DC:12, range:"60"}],
+      Saves: {
+        STR:0, 
+        DEX:0, 
+        CON:0, 
+        INT:0, 
+        WIS:2, 
+        CHA:0
+      },
+      notes: "Spellcasting. The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared: Cantrips (at will): light, sacred flame, thaumaturgy. 1st level (3 slots): bless, cure wounds, sanctuary"
+    },
+    { 
+      name: "Animated Armor", 
+      creatureHp: 33, 
+      armorClass: 18, 
+      attackOptions:[{name:"Slam", saving: false, bonus:4, damDie:6, numDie:1, damBonus:2, type:"Bludgeoning"}],
+      Saves: {
+        STR:2, 
+        DEX:0, 
+        CON:1, 
+        INT:-5, 
+        WIS:-4, 
+        CHA:-5
+      },
+      notes: "Multiattack. The armor makes two melee attacks. Antimagic Susceptibility. The armor is incapacitated while in the area of an antimagic field. If targeted by dispel magic, the armor must succeed on a Constitution saving throw against the caster's spell save DC or fall unconscious for 1 minute. False Appearance. While the armor remains motionless, it is indistinguishable from a normal suit of armor."
+    },
+    { 
+      name: "Apes", 
+      creatureHp: 19, 
+      armorClass: 12, 
+      attackOptions:[{name:"Fist", saving: false, bonus:5, damDie:6, numDie:1, damBonus:3, type:"Bludgeoning"},
+                      {name:"Rock", saving: false, bonus:5, damDie:6, numDie:1, damBonus:3, type:"Bludgeoning", range:"25/50"}],
+      Saves: {
+        STR:3, 
+        DEX:2, 
+        CON:2, 
+        INT:-2, 
+        WIS:1, 
+        CHA:-2
+      },
+      notes: "Multiattack. The ape makes two fist attacks."
+    },
+    { 
       name: "Goblins", 
       creatureHp: 7, 
       armorClass: 15, 
       attackOptions:[{name:"Scimitar",  saving: false, bonus:4, damDie:6, numDie:1, damBonus:2, type:"Slashing"}, 
-                      {name:"Shortbow",  saving: false, bonus:4, damDie:6, numDie:1, damBonus:2, type:"Piercing"}],
+                      {name:"Shortbow",  saving: false, bonus:4, damDie:6, numDie:1, damBonus:2, type:"Piercing", range:"80/320"}],
       Saves: {
         STR:-1, 
         DEX:2, 
@@ -21,7 +68,7 @@ const CreatureData = [
       creatureHp: 5, 
       armorClass: 12, 
       attackOptions:[{name:"Dagger", saving: false, bonus:4, damDie:4, numDie:1, damBonus:2, type:"Piercing"},
-                      {name:"Sling", saving: false, bonus:4, damDie:4, numDie:1, damBonus:2, type:"Bludgeoning"},],
+                      {name:"Sling", saving: false, bonus:4, damDie:4, numDie:1, damBonus:2, type:"Bludgeoning", range:"30/120"},],
       Saves: {
         STR:-2, 
         DEX:2, 
