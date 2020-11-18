@@ -49,7 +49,7 @@ function Heal(props) {
         case 3:
             return(
                 <div>
-                    <button onClick={() => addMembers()}>
+                    <button className="marginButton" onClick={() => addMembers()}>
                         Reinforce:
                     </button>
                     <input type="number" min={1} value={amount} onChange={(e) => changeAmount(e.target.value)}></input>

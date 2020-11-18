@@ -22,6 +22,7 @@ function Attack(props) {
     const [selection, changeSelection] = useState(false) //Boolean for target only selected creatures.
     const [prevState, changePrevState] = useState(null)
     const [selectedTargets, changeSelectedTargets] = useState([])
+    const [deadGuys, changeDeadGuys] = useState(null)
 
     const maxNumAttackers = Math.min(numAttackers, aliveCreatures)
 
@@ -61,7 +62,7 @@ function Attack(props) {
         // Show button to open this component and hide all others
         case 0:
             return(
-                    <button onClick={() => props.updateMenu(1)} >
+                    <button className="marginButton" onClick={() => props.updateMenu(1)} >
                         Attack
                     </button>
             )
@@ -117,8 +118,8 @@ function Attack(props) {
                                                         selectedCreatures={selectedTargets} targetType={targetType} buttonText={"Attack!"}
                                                         changeRollResults={props.changeResults} changePrevState={changePrevState}
                                                         updateGroup={props.updateGroup} secondGroup={props.groupData[targetGroup]}
-                                                        selectedAttack={attack} numAttackers={numAttackers} />
-
+                                                        selectedAttack={attack} numAttackers={numAttackers} changeDeadGuys={changeDeadGuys} />
+                                            Dead: {deadGuys}
                                             <button onClick={() => undoLastChange()}>
                                                 Undo
                                             </button>

@@ -4,6 +4,7 @@ import Group from './Components/Group.js'
 import NewGroupMaker from './Components/NewGroupMaker.js'
 import Group_obj from './Classes/Group_obj.js'
 import Attack_obj from './Classes/Attack_obj.js'
+import Info from './Components/Info.js'
 
 
 function App() {
@@ -67,7 +68,8 @@ function App() {
 
   return (
     <div className="App" >
-      
+      Instructions
+      <Info />
       Use Critical Hits?
       <input type="checkbox" name="crit" checked={crit} onChange={()=> changeCrit(!crit)}/>
       {groups}

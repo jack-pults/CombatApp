@@ -29,15 +29,15 @@ function Group(props) {
         props.updateStats(newGroup)
     }
     
+    if (menu === 0 && results.length > 0) changeResults([])
 
     return (
         <div className="groupContainer">
         <span className="group">
             <div className="groupStats">
-                {" " + group.name} 
-                    <br />
-                {aliveCreatures}/{group.initialSize} Creatures<br />
-                <HealthCard group={group} /> AC: {group.armorClass} 
+                <span className="groupTitle">{group.name} {aliveCreatures}/{group.initialSize} </span>  <br />
+                <HealthCard group={group} /> <br />
+                AC: {group.armorClass} 
                 <SaveBlock group={group}/> <br />
                 <button onClick={() => changeSelectedCreatures(group.creatures.map( (value, index)=> index))}>Select All</button>
                 <button onClick={() => changeSelectedCreatures([])}>Clear Selection</button>

@@ -6,18 +6,19 @@ function HealthCard(props) {
     const [viewMode, changeViewMode] = useState(false)
     const group = props.group
 
+    const average = Math.round(group.creatures.reduce((average, num)=> average + num) / group.creatures.length)
 
     return (
-        <div>
+        <button type="button" className="healthButton" onClick={() => changeViewMode(!viewMode)}  
+        style={ average < group.creatureHp / 2 ?  {background:"#ec4e20" } : {background: "#548c2f"}} >
 
            {viewMode ?
-            "Total HP: " + group.creatures.reduce((total,num)=> total + num) + " / " + group.creatureHp * group.initialSize + " Originally"
+            "Total HP: " + group.creatures.reduce((total,num)=> total + num) + "/" + group.creatureHp * group.initialSize 
             : 
-            "Average HP: " + Math.round(group.creatures.reduce((average, num)=> average + num) / group.creatures.length) + " over " + group.creatures.length + " creatures"
+            "Average HP: " + average
            }
 
-            <button type="button" onClick={() => changeViewMode(!viewMode)} > {viewMode ? "Average" : "Total"}  </button>
-        </div>
+        </button>
     )
 }
 

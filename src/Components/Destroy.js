@@ -59,7 +59,7 @@ function Destroy(props) {
         case 4:
             return(
                 <div>
-                    <button onClick={() => deleteSelected()}>
+                    <button className="marginButton" onClick={() => deleteSelected()}>
                         Destroy Selected
                     </button>
                     <br />

@@ -114,8 +114,8 @@ function ApplyDamage(props) {
                    let newDamage = props.selectedAttack.damBonus
                    let victim = Math.floor(Math.random()*nonzeros.length)
                    finalResults.push([rollResults[0]])
-                   for (let i = 0; i <= props.selectedAttack.numDie; i++) {
-                       newDamage += Math.floor(Math.random() * props.selectedAttack.damDie)
+                   for (let i = 0; i < props.selectedAttack.numDie; i++) {
+                       newDamage += Math.floor(Math.random() * props.selectedAttack.damDie) + 1
                    }
                     if(props.selectedAttack.saving) {
                         if(rollResults[0] + newGroup.Saves[props.selectedAttack.savingType] < props.selectedAttack.DC ) {
@@ -140,7 +140,10 @@ function ApplyDamage(props) {
                         }
                     }
 
-                   if(newGroup[nonzeros[victim]] === 0) nonzeros.splice(victim, 1)
+                   if(newGroup.creatures[nonzeros[victim]] === 0) {
+                       nonzeros.splice(victim, 1)
+                       deadGuys += 1
+                    }
                    rollResults.splice(0,1) 
 
                } 

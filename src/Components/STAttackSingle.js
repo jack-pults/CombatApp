@@ -12,7 +12,6 @@ function STAttackSingle(props){
     function rollSaves(){
 
       
-        let results = []
         let rolls = SmallFunctions.rollDice(props.rolltype, props.numAttackers)
         
         let finalResults = []
@@ -21,11 +20,11 @@ function STAttackSingle(props){
             let roll = rolls[i];
             finalResults.push([roll])  
             if ( (roll + targetBonus) < attack.DC ) {
-                    results.push(Math.floor(Math.random()*attack.damDie + attack.damBonus + 1))
+                    
                     finalResults[i].push(Math.floor(Math.random()*attack.damDie + attack.damBonus + 1))
                 }
             else {
-                   results.push(0)
+                   
                    finalResults[i].push(0) 
                 }
 

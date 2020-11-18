@@ -1,9 +1,14 @@
-.App {
+HTML {
   text-align: center;
-  /* background-color: #022b3a; */
+  background-color: #edd892;
 }
 
-
+button {
+  background-color: #edd892;
+  border-radius: 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 110%;
+}
 
 .Selectable {
   cursor: pointer;
@@ -37,8 +42,9 @@
 
 
 textarea {
-  max-width: 90%;
-  min-width: 90%;
+  max-width: 40em;
+  min-width: 350px;
+  margin-bottom: 20px;
 }
 
 #Title {
@@ -47,45 +53,49 @@ textarea {
 
 .groupContainer {
   
-  background-color: #f6f8ff;
+  
   
 }
 
 .group {
   display: grid;
-  grid-template-columns: minmax(140px,2fr) 3fr;
-  border: dotted black;
+  grid-template-columns: minmax(140px,1fr) minmax(220px,2fr);
+  font-family: "Times New Roman", Times, serif;
   margin: auto;
-  gap: 1rem;
+  border: 1px solid black ;
   place-content: center;
   justify-items: center;
-  
+  background-color: beige;
+  border-radius: 20px;
+  max-width: 30em;
 }
 
 .group > * {
-  border: dotted red;
+  
   
 }
 
 .groupStats {
   max-width: 310px;
+  justify-self: end;
+  border-right: 1px solid black;
   
 }
 
 .memberCircles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
-  border: dotted blue;
+  /* border: dotted blue; */
+  
 }
 
 .menu {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  align-self: start;
+ 
 }
 
 .diceContainer {
-  max-width: 95%;
+  
 }
 
 .resultContainer {
@@ -133,3 +143,18 @@ textarea {
   100% {visibility: visible;}
 }
 
+.groupTitle {
+  font-weight: bold;
+  font-size: 140%;
+}
+
+.healthButton {
+  border: 1px solid black;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 100%;
+}
+
+.marginButton {
+  margin-top: 5em;
+}
