@@ -36,12 +36,17 @@ function Group(props) {
         <span className="group">
             <div className="groupStats">
                 <span className="groupTitle">{group.name} {aliveCreatures}/{group.initialSize} </span>  <br />
-                <HealthCard group={group} /> <br />
-                AC: {group.armorClass} 
-                <SaveBlock group={group}/> <br />
+                 
+                <b>AC: </b>{group.armorClass} 
+                
+                <SaveBlock group={group}/> 
+                Saving Bonus <br />
+
                 <button onClick={() => changeSelectedCreatures(group.creatures.map( (value, index)=> index))}>Select All</button>
                 <button onClick={() => changeSelectedCreatures([])}>Clear Selection</button>
+                
                 <MemberDisplay group={group} selectedCreatures={selectedCreatures} changeSelectedCreatures={changeSelectedCreatures} /> 
+                <HealthCard group={group} />
                 </div>
             
                 <div className="menu">

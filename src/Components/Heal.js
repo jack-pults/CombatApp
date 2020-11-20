@@ -54,7 +54,7 @@ function Heal(props) {
                     </button>
                     <input type="number" min={1} value={amount} onChange={(e) => changeAmount(e.target.value)}></input>
                     <button onClick={ ()=> healSelected()}>
-                        Heal Selected:
+                        Heal Selected
                     </button>
                     <button onClick={() => props.updateMenu(0)}>
                             Back

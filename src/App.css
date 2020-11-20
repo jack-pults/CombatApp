@@ -1,11 +1,13 @@
 HTML {
   text-align: center;
   background-color: #edd892;
+  font-family: "Times New Roman", Times, serif;
 }
 
 button {
-  background-color: #edd892;
+  background-color: #e2b51f;
   border-radius: 8px;
+  border-color: black;
   font-family: "Times New Roman", Times, serif;
   font-size: 110%;
 }
@@ -49,13 +51,11 @@ textarea {
 
 #Title {
   text-align: center;
+  text-decoration: underline;
+  font-size: 150%;
+  font-family: "Times New Roman", Times, serif;
 }
 
-.groupContainer {
-  
-  
-  
-}
 
 .group {
   display: grid;
@@ -70,10 +70,6 @@ textarea {
   max-width: 30em;
 }
 
-.group > * {
-  
-  
-}
 
 .groupStats {
   max-width: 310px;
@@ -143,6 +139,16 @@ textarea {
   100% {visibility: visible;}
 }
 
+/* .fade {
+  animation-name: slow-fade;
+  animation-duration: 10s;
+}
+
+@keyframes slow-fade {
+  0% {opacity: 100%;}
+  100% {opacity: 0%;}
+} */
+
 .groupTitle {
   font-weight: bold;
   font-size: 140%;
@@ -150,11 +156,24 @@ textarea {
 
 .healthButton {
   border: 1px solid black;
-  margin-left: 1em;
-  margin-right: 1em;
+  margin-bottom: 3px;
   font-size: 100%;
+  border-radius: 30px;
 }
 
 .marginButton {
   margin-top: 5em;
+}
+
+.saveBlock {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  border: 1px solid black;
+}
+
+.info {
+  font-size: 80%;
 }

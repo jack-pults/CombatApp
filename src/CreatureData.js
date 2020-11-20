@@ -48,6 +48,22 @@ const CreatureData = [
       notes: "Multiattack. The ape makes two fist attacks."
     },
     { 
+      name: "Giant Badgers", 
+      creatureHp: 13, 
+      armorClass: 10, 
+      attackOptions:[{name:"Bite", saving: false, bonus:3, damDie:6, numDie:1, damBonus:1, type:"Piercing"},
+                      {name:"Claws", saving: false, bonus:3, damDie:4, numDie:2, damBonus:1, type:"Slashing"}],
+      Saves: {
+        STR:1, 
+        DEX:0, 
+        CON:2, 
+        INT:-4, 
+        WIS:1, 
+        CHA:-3
+      },
+      notes: "Keen Smell. The badger has advantage on Wisdom (Perception) checks that rely on smell. Multiattack. The badger makes two attacks: one with its bite and one with its claws."
+    }, 
+    { 
       name: "Goblins", 
       creatureHp: 7, 
       armorClass: 15, 

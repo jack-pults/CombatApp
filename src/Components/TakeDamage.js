@@ -50,6 +50,13 @@ function TakeDamage(props) {
         case 2:
             return(
                 <div>
+                    <button onClick={() => changeAoe(!aoe)} >
+                        {aoe ?  "Area of Effect Damage": "Damage Single Target"}
+                    </button> <br />
+                    <button onClick={() => props.updateMenu(0)}>
+                        Back
+                    </button> 
+
                     <TargetType targetType={targetType} change={changeTargetType} />
                     <strong> ||</strong> Selected Creatures Only? <input type="checkbox" checked={selection} onChange={() => changeSelection(!selection)} /> 
                     <br/>
@@ -102,13 +109,10 @@ function TakeDamage(props) {
                         Undo Damage
                     </button>
 
-                    <button onClick={() => changeAoe(!aoe)} >
-                        {aoe ? "Single" : "Group"}
-                    </button>
-                    Dead:{deadGuys}
-                   <button onClick={() => props.updateMenu(0)}>
-                        Back
-                    </button> 
+                    <br />
+                    {deadGuys > 0 ?  <b className="fade">{deadGuys} Dead </b> :
+                                                <span></span>}
+                   
                 </div>
             )
         default: 

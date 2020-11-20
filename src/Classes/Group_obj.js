@@ -27,7 +27,7 @@ class Group_obj {
         this.initialSize = 1
         this.creatureHp = 5
         this.armorClass = 10
-        this.attackOptions = [new Attack_obj("Test")]
+        this.attackOptions = [new Attack_obj("Unarmed")]
         this.Saves = new Saves_obj()
         this.notes = "This is where you can write additional notes"
     }

@@ -34,14 +34,13 @@ function App() {
     list[0].notes = "Nimble Escape. The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
 
     list.push(new Group_obj(1))
-    list[1].name=  "Sharks"
-    list[1].creatures= [9,9,9,9,9,9,9]
+    list[1].name=  "Reef Sharks"
+    list[1].creatures= [22,22,22,22,22,22,22]
     list[1].initialSize=  7
-    list[1].creatureHp=  9 
-    list[1].armorClass=  15 
+    list[1].creatureHp=  22 
+    list[1].armorClass=  12 
     list[1].attackOptions = []
-    list[1].attackOptions.push(new Attack_obj("Scimitar", false, 4, 6, 1, 2, "Slashing"))
-    list[1].attackOptions.push(new Attack_obj("Shortbow", false, 4, 6, 1, 2, "Piercing"))
+    list[1].attackOptions.push(new Attack_obj("Bite", false, 4, 8, 1, 2, "Piercing"))
     list[1].Saves.STR = -1
     list[1].Saves.DEX = 2
     list[1].Saves.CON = 0

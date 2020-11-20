@@ -38,11 +38,7 @@ function NewGroupMaker(props){
         }
         let preset = CreatureData[event.target.value]
         let next = JSON.parse(JSON.stringify(newCreature))
-
-        console.log(Object.assign(next, preset))
-        
-
-
+        Object.assign(next, preset)
         changeNewCreature(next)
     }
 
@@ -89,7 +85,7 @@ function NewGroupMaker(props){
 
     return(
         <div>
-            New Group Editor <br />
+            <b className="groupTitle">New Group Editor</b> <br />
             Select Preset: <select onChange={submitPreset} name="presets" id="presets"> 
                             <option value={"Default"}>---</option>
                             {creaturePresets()}
@@ -128,7 +124,13 @@ function NewGroupMaker(props){
                 </label>
             </form>
 
+            <br />
+            Creature Attacks:
+            {newCreature.attackOptions.map( (value,index) => <div key={index}>+{value.bonus} {value.name} {value.numDie}d{value.damDie}+{value.damBonus} {value.type} </div>)}
+            
             <form onSubmit={submitAttack}>
+                <br />
+                Add Attack:<br />
                 Name<input required={true} type="text" name="name"></input> 
                 Saving Throw Attack?<input type="checkbox" name="saving" value={attackType} onChange={()=>changeAttackType(!attackType)}></input>
                         <div hidden={!attackType}> DC:<input required={attackType} type="number" name="DC"></input> 
@@ -143,11 +145,13 @@ function NewGroupMaker(props){
                 
                             </div> 
                             
-
-                <div hidden={attackType}>Attack Bonus</div><input hidden={attackType} type="number" name="bonus"></input> 
-                Damage Die<input required={true} type="number" min="1" name="damDie" defaultValue={4}></input> 
+                <br />
+                <span hidden={attackType}>Attack Bonus</span><input hidden={attackType} type="number" name="bonus"></input> 
+                &nbsp; Damage Die<input required={true} type="number" min="1" name="damDie" defaultValue={4}></input>
+                <br /> 
                 Number of Die<input required={true} type="number" name="numDie" min="0" defaultValue={1} ></input>
-                Damage Bonus<input type="number" name="damBonus" min="0"></input>
+                &nbsp; Damage Bonus<input type="number" name="damBonus" min="0"></input>
+                <br />
                 Damage Type<select>
                     <option value="Piercing">Piercing</option>
                     <option value="Slashing">Slashing</option>
@@ -165,13 +169,13 @@ function NewGroupMaker(props){
                     <option value="Special">Special</option>
                     <option value="True">True</option>
                 </select>
+                &nbsp;&nbsp;
                 <button type="submit">Add Attack</button>
             </form>
-
-            {newCreature.attackOptions.map( (value,index) => <div key={index}>+{value.bonus} {value.name} {value.numDie}d{value.damDie}+{value.damBonus} {value.type} </div>)}
             
             <Notes group={newCreature} updateGroup={changeNewCreature} />
-            <button type="button" onClick={submitCreature}>Create</button>
+            <br />
+            <button type="button" onClick={submitCreature}>Create Group</button>
         </div>
     )
 

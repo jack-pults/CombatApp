@@ -155,7 +155,7 @@ function ApplyDamage(props) {
             props.changeRollResults([])
         else
             props.changeRollResults(finalResults)
-        props.updateGroup(newGroup)   
+        props.updateGroup(newGroup)  
         props.changeDeadGuys(deadGuys) 
     }
 

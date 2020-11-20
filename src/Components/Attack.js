@@ -72,7 +72,7 @@ function Attack(props) {
             return(
                 <div>
                         <button onClick={() => changeSingleAttack(!singleAttack)}>
-                            {singleAttack ? "Attack Group" : "Attack Single Target"}
+                            {singleAttack ? "Attacking One Target" : "Attacking A Group"}
                         </button>   <br />                 
                         <button onClick={() => props.updateMenu(0)}>
                             Back
@@ -119,10 +119,13 @@ function Attack(props) {
                                                         changeRollResults={props.changeResults} changePrevState={changePrevState}
                                                         updateGroup={props.updateGroup} secondGroup={props.groupData[targetGroup]}
                                                         selectedAttack={attack} numAttackers={numAttackers} changeDeadGuys={changeDeadGuys} />
-                                            Dead: {deadGuys}
+                                            
                                             <button onClick={() => undoLastChange()}>
                                                 Undo
                                             </button>
+                                            <br />
+                                            {deadGuys > 0 ?  <b className="fade">{deadGuys} Dead </b> :
+                                                <span></span>}
                                             
                                             <MemberDisplay group={props.groupData[targetGroup]} selectedCreatures={selectedTargets} changeSelectedCreatures={changeSelectedTargets} />
                                             </span>

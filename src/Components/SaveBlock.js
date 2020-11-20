@@ -12,10 +12,26 @@ function SaveBlock(props) {
     }
 
     return (
-        <div>
-            STR: {addPlus(Saves.STR)} DEX: {addPlus(Saves.DEX)}<br/>
-            CON: {addPlus(Saves.CON)} INT: {addPlus(Saves.INT)}<br/>
-            WIS: {addPlus(Saves.WIS)} CHA: {addPlus(Saves.CHA)}
+        <div className="saveBlock">
+            
+            <div>
+            <b>STR:</b> {addPlus(Saves.STR)} 
+                </div>
+                <div>
+                <b>DEX:</b> {addPlus(Saves.DEX)}
+                </div>
+                <div>
+                <b>CON:</b> {addPlus(Saves.CON)} 
+                </div>
+                <div>
+                <b>INT:</b> {addPlus(Saves.INT)}
+                </div>
+                <div>
+                <b>WIS:</b> {addPlus(Saves.WIS)} 
+                </div>
+                <div>
+                <b>CHA:</b> {addPlus(Saves.CHA)}
+                </div>
         </div>
     )
 }
