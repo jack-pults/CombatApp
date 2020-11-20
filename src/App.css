@@ -16,8 +16,6 @@ button {
   cursor: pointer;
 }
 
-
-
 .svgtext {
   pointer-events: none;
   -webkit-touch-callout: none;
@@ -90,9 +88,6 @@ textarea {
  
 }
 
-.diceContainer {
-  
-}
 
 .resultContainer {
   display: inline-grid;
