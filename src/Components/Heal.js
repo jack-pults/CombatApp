@@ -19,7 +19,7 @@ function Heal(props) {
         for (let i = 1; i <= amount; i++)
             newGroup.creatures.push(newGroup.creatureHp)
 
-        newGroup.initialSize += amount;
+        newGroup.initialSize = Number(amount) + Number(newGroup.initialSize);
         props.updateGroup(newGroup)
     }
 
